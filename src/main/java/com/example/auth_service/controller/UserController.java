@@ -4,6 +4,7 @@ import com.example.auth_service.dto.request.UserCreationRequest;
 import com.example.auth_service.dto.response.ApiResponse;
 import com.example.auth_service.dto.response.UserResponse;
 import com.example.auth_service.service.UserService;
+import jakarta.validation.Valid;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -22,7 +23,7 @@ public class UserController {
     UserService userService;
 
     @PostMapping
-    public ApiResponse<UserResponse> createUser(@RequestBody UserCreationRequest request){
+    public ApiResponse<UserResponse> createUser(@RequestBody @Valid UserCreationRequest request){
         ApiResponse<UserResponse> apiResponse = new ApiResponse<>();
         apiResponse.setResult(userService.createUser(request));
         return apiResponse;
@@ -37,9 +38,6 @@ public class UserController {
 
     @GetMapping
     public ApiResponse<List<UserResponse>> getAll(){
-        var authentication = SecurityContextHolder.getContext().getAuthentication();
-        log.info("username: {}", authentication.getName());
-        authentication.getAuthorities().forEach(grantedAuthority -> log.info(grantedAuthority.getAuthority()));
         ApiResponse<List<UserResponse>> apiResponse  = new ApiResponse<>();
         apiResponse.setResult(userService.getAllUser());
         return apiResponse;

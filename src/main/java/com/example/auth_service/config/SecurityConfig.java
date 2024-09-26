@@ -21,7 +21,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableMethodSecurity
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class SecurityConfig {
-    final String PUBLIC_ENDPOINTS[] = {"/users", "/auth/login", "/auth/introspect"};
+    final String PUBLIC_ENDPOINTS[] = {"/users", "/auth/login", "/auth/introspect", "/auth/refresh", "/auth/logout"};
     @Autowired
     CustomJwtDecoder customJwtDecoder;
 
