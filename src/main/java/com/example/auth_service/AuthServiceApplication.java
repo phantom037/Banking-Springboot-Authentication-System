@@ -11,8 +11,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class AuthServiceApplication {
 	@Bean
 	public ModelMapper modelMapper(){
-		//ModelMapper modelMapper = new ModelMapper();
-		//modelMapper.getConfiguration().setFieldMatchingEnabled(true);
 		return new ModelMapper();
 	}
 	public static void main(String[] args) {

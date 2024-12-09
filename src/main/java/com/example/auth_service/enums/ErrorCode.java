@@ -13,7 +13,10 @@ public enum ErrorCode {
     USER_NOT_EXISTED(404, "User not existed", HttpStatus.NOT_FOUND),
     UNAUTHENTICATED(401, "User is not authenticated", HttpStatus.UNAUTHORIZED), //UNAUTHORIZED => code = 401
     UNAUTHORIZED(403, "You do not have permission", HttpStatus.FORBIDDEN),
-    INVALID_DOB(400, "Invalid date of birth. You must be at least {min}", HttpStatus.BAD_REQUEST);
+    INVALID_DOB(400, "Invalid date of birth. You must be at least {min}", HttpStatus.BAD_REQUEST),
+    PERMISSION_EXISTED(400, "Permission existed", HttpStatus.BAD_REQUEST),
+    FIRSTNAME_IS_NULL(400, "First name must not be null", HttpStatus.BAD_REQUEST),
+    LASTNAME_IS_NULL(400, "Last name must not be null", HttpStatus.BAD_REQUEST);
     private int code;
     private String message;
     private HttpStatus status;

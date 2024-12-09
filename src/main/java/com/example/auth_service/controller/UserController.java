@@ -1,6 +1,7 @@
 package com.example.auth_service.controller;
 
 import com.example.auth_service.dto.request.UserCreationRequest;
+import com.example.auth_service.dto.request.UserUpdateRequest;
 import com.example.auth_service.dto.response.ApiResponse;
 import com.example.auth_service.dto.response.UserResponse;
 import com.example.auth_service.service.UserService;
@@ -43,6 +44,13 @@ public class UserController {
         return apiResponse;
     }
 
+    @PostMapping("{id}")
+    public ApiResponse<UserResponse> updateUser(@PathVariable String id, @RequestBody UserUpdateRequest request){
+        ApiResponse<UserResponse> apiResponse = new ApiResponse<>();
+        apiResponse.setResult(userService.updateUser(id, request));
+        return apiResponse;
+    }
+
     @GetMapping("/myinfo")
     public ApiResponse<UserResponse> getMyInfo(){
         ApiResponse<UserResponse> apiResponse = new ApiResponse<>();
@@ -55,6 +63,8 @@ public class UserController {
         userService.deleteUser(id);
         return ApiResponse.builder().code(200).message("Successful delete user!").build();
     }
+
+    
 
 
 }
